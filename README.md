@@ -1,2 +1,2 @@
-# Déja Vu
+# Déjà Vu
 Your Bookmark in the Cloud
