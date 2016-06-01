@@ -33,9 +33,9 @@ angular.module('DejaVu').controller('ModalCtrl', ['$scope', '$state', '$uibModal
     });
 
     modalInstance.result.then(function(bookmark) {
-      if (typeof bookmark.name !== "undefined" 
-        && typeof bookmark.url !== "undefined" 
-        && typeof bookmark.category !== "undefined") {
+      if (typeof bookmark.name !== 'undefined' 
+        && typeof bookmark.url !== 'undefined' 
+        && typeof bookmark.category !== 'undefined') {
         if (bookmark._id) {
           bookmarkService.update(bookmark, function() {
             $state.reload();

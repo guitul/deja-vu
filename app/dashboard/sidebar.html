@@ -16,7 +16,7 @@
       <a href="#/bookmarks" ng-click="setCategory()">All<span class="menu-badge badge">{{bookmarks.length}}</span><span class="menu-icon fa fa-star"></span></a>
     </li>
     <li class="sidebar-title"><span>CATEGORIES</span></li>
-    <li class="sidebar-list" ng-repeat="category in categories">
+    <li class="sidebar-list" ng-repeat="category in categories | orderBy:'name'">
       <a href="#/bookmarks" ng-click="setCategory(category)">{{category.name}}<span class="menu-badge badge">{{category.count}}</span><span class="menu-icon fa" ng-class="category.icon"></span></a>
     </li>
   </ul>

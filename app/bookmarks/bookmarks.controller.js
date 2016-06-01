@@ -54,7 +54,7 @@ function BookmarkCtrl($scope, $state, bookmarkService, searchService) {
     }
 
     $scope.delete = function(bookmark) {
-        bookmarkService.delete(bookmark, function() {
+        bookmarkService.delete({'id': bookmark._id}, function() {
             $state.reload();
         });
     }
