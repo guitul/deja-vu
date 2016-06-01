@@ -1,0 +1,34 @@
+<div id="sidebar-wrapper">
+  <ul class="sidebar">
+    <li class="sidebar-main">
+      <a ng-click="toggleSidebar()">
+        <img src="img/booklet.png"/> Déjà Vu
+        <span class="menu-icon glyphicon glyphicon-transfer"></span>
+      </a>
+    </li>
+    <li class="sidebar-title sidebar-form">
+      <form class="form-inline">
+        <input type="text" placeholder="Add a category..." class="form-control sidebar-input input-sm" />
+        <i class="btn-icon fa fa-plus-circle fa-2x" aria-hidden="true"></i>
+      </form>
+    </li>
+    <li class="sidebar-list">
+      <a href="#/bookmarks" ng-click="setCategory()">All<span class="menu-badge badge">{{bookmarks.length}}</span><span class="menu-icon fa fa-star"></span></a>
+    </li>
+    <li class="sidebar-title"><span>CATEGORIES</span></li>
+    <li class="sidebar-list" ng-repeat="category in categories">
+      <a href="#/bookmarks" ng-click="setCategory(category)">{{category.name}}<span class="menu-badge badge">{{category.count}}</span><span class="menu-icon fa" ng-class="category.icon"></span></a>
+    </li>
+  </ul>
+  <div class="sidebar-footer">
+    <div class="col-xs-4">
+      <a href="https://github.com/guitul/dejavu-web" target="_blank">Github</a>
+    </div>
+    <div class="col-xs-4">
+      <a href="https://github.com/guitul/dejavu-web/blob/master/README.md" target="_blank">About</a>
+    </div>
+    <div class="col-xs-4">
+      <a href="https://www.coursera.org/learn/web-development-project/home/welcome" target="_blank">Coursera</a>
+    </div>
+  </div>
+</div>

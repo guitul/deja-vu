@@ -1,0 +1,29 @@
+<div class="fab" ng-click="open()"><span>+</span></div>
+<script type="text/ng-template" id="bookmarkForm.html">
+  <div class="modal-header">
+    <button type="button" class="close" ng-click="cancel()" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+    <h4 class="modal-title"><i class="fa fa-bookmark" aria-hidden="true"></i> {{title}}</h4>
+  </div>
+  <div class="modal-body">
+    <div class="form-group">
+      <label class="sr-only" for="bookmark-url">Link</label>
+      <div class="input-group">
+        <div class="input-group-addon"><i class="fa fa-link" aria-hidden="true"></i></div>
+        <input type="url" class="form-control" id="bookmark-url" placeholder="Link" ng-model="bookmark.url">
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="sr-only" for="bookmark-name">Name</label>
+      <input type="text" class="form-control" id="bookmark-name" placeholder="Name" ng-model="bookmark.name">
+    </div>
+    <div class="form-group">
+      <label for="bookmark-category">Category</label>
+      <select class="form-control" id="bookmark-category" ng-model="bookmark.category" ng-options="category._id as category.name for category in categories">
+      </select>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-primary" ng-click="ok()">{{label}}</button>
+    <button type="button" class="btn btn-default" ng-click="cancel()">Cancel</button>
+  </div>
+</script>

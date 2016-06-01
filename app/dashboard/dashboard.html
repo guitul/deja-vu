@@ -1,0 +1,10 @@
+<div id="page-wrapper" ng-class="{'open': toggle}" ng-cloak>
+  <div ui-view="sidebar"></div>
+  <div id="content-wrapper">
+    <div class="page-content">
+      <div ui-view="headerbar"></div>
+      <div ui-view="bookmarkList"></div>
+      <div ui-view="bookmarkForm"></div>
+    </div>
+  </div>
+</div>

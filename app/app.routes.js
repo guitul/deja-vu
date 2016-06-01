@@ -11,15 +11,33 @@ angular.module('DejaVu').config(['$stateProvider', '$urlRouterProvider',
 
         // Application routes
         $stateProvider
-            .state('index', {
-                url: '/:id',
-                templateUrl: 'bookmarks/bookmarks.html',
-                controller: 'BookmarkCtrl'
+            .state('home', {
+                url: '/',
+                templateUrl: 'home/home.html'
             })
-            .state('bookmark', {
-                url: '/bookmark/:id',
-                templateUrl: 'bookmarks/bookmark.html',
-                controller: 'ModalCtrl'
+            .state('bookmarks', {
+                url: '/bookmarks',
+                views: {
+                    '': {
+                        templateUrl: 'dashboard/dashboard.html',
+                        controller: 'MasterCtrl'
+                    },
+                    'sidebar@bookmarks': {
+                        templateUrl: 'dashboard/sidebar.html',
+                        controller: 'BookmarkCtrl'
+                    },
+                    'headerbar@bookmarks': {
+                        templateUrl: 'dashboard/headerbar.html'
+                    },
+                    'bookmarkList@bookmarks': {
+                        templateUrl: 'bookmarks/bookmarks.html',
+                        controller: 'BookmarkCtrl'
+                    },
+                    'bookmarkForm@bookmarks': {
+                        templateUrl: 'bookmarks/bookmark-detail.html',
+                        controller: 'ModalCtrl'
+                    }
+                }
             });
     }
 ]);

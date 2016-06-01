@@ -3,35 +3,36 @@
  */
 
 angular.module('DejaVu')
-    .controller('BookmarkCtrl', ['$scope', '$http', '$stateParams', 'bookmarkService', 'searchService', BookmarkCtrl]);
+    .controller('BookmarkCtrl', ['$scope', '$state', 'bookmarkService', 'searchService', BookmarkCtrl]);
 
-function BookmarkCtrl($scope, $http, $stateParams, bookmarkService, searchService) {
-    console.log('in BookmarkCtrl');
-    $scope.bookmarks = bookmarkService.query({}, function() {
+function BookmarkCtrl($scope, $state, bookmarkService, searchService) {
+    
+    $scope.bookmarks = bookmarkService.query({}, function(bookmarks) {
         $scope.loading = false;
-        $scope.getCategories();
+        $scope.updateCategories();
+        $scope.bookmarksByCategory = bookmarks;
     });
     
+    $scope.bookmarksByCategory = [];
     $scope.categories = [];
     $scope.search = searchService;
     $scope.loading = true;
 
-    $scope.getBookmarksByCategory = function() {
-        console.log('$stateParams.id = ' + $stateParams.id);
-        if ($stateParams.id) {
-            console.log('filtering bookmarks...');
-            $http.get('https://dejavu-api.herokuapp.com/bookmarks/category/' + $stateParams.id).success(function(data) {
-                return data;
-            });
+    $scope.$on('selectCategory', function(event, category) {
+        if (category) {
+            var bookmarksByCategory = [];
+            for (var i = 0, j = $scope.bookmarks.length; i < j; i++) {
+                if ($scope.bookmarks[i].category._id === category._id) {
+                    bookmarksByCategory.push($scope.bookmarks[i]);
+                }
+            }
+            $scope.bookmarksByCategory = bookmarksByCategory;
         } else {
-            console.log('returning all bookmarks...');
-            return $scope.bookmarks;
+            $scope.bookmarksByCategory = $scope.bookmarks;
         }
-    }
+    });
 
-    $scope.bookmarksByCategory = $scope.getBookmarksByCategory();
-
-    $scope.getCategories = function() {
+    $scope.updateCategories = function() {
         var counts = {};
         var id = '';
         for (var i = 0, j = $scope.bookmarks.length; i < j; i++) {
@@ -50,6 +51,12 @@ function BookmarkCtrl($scope, $http, $stateParams, bookmarkService, searchServic
 
     $scope.edit = function(bookmark) {
         $scope.$parent.$broadcast('editBookmark', bookmark);
+    }
+
+    $scope.delete = function(bookmark) {
+        bookmarkService.delete(bookmark, function() {
+            $state.reload();
+        });
     }
 
 };

@@ -1,6 +1,72 @@
+body, html {
+  height: 100%;
+}
+
 body.modal-open {
   padding-right: 0px !important;
 }
+
+.page {
+  height: 100%; 
+}
+
+/* Welcome page */
+
+.welcome {
+  height: 100%;
+  padding-top: 50px;
+  padding-bottom: 50px;
+  color: #f8f8f8;
+  background: url(../img/intro.jpg) no-repeat center center;
+  background-size: cover;
+  text-align: center;
+}
+
+.welcome-text {
+  position: absolute;
+  top: 20%;
+}
+
+#app {
+  font-size: 80px;
+  font-weight: bold;
+  letter-spacing: 6px;
+}
+
+#motto {
+  font-weight: 300;
+}
+
+.btn-welcome {
+  letter-spacing: 1.5px;
+}
+
+.btn-login {
+  border: 1px solid #4A90BE;
+  color: #fff;
+  background-color: #4A90BE;
+}
+
+.btn-login:hover {
+  border: 1px solid #4A90BE;
+  color: #4A90BE;
+  background: rgba(204, 204, 204, 0);
+}
+
+.btn-register {
+  border: 1px solid #fff;
+  color: #fff;
+}
+
+.btn-register:hover {
+  background-color: #fff;
+}
+
+.list-inline {
+  margin-top: 30px;
+}
+
+/* Bookmarks page */
 
 .row.header .meta .page {
 	line-height: 40px;
@@ -112,6 +178,12 @@ ul.sidebar .sidebar-list .menu-badge {
   color: #b2bfdc;
 }
 
+.widget-snapshot {
+  margin: auto;
+  display: block;
+  padding-top: 60px;
+}
+
 .tags {
   list-style: none;
   margin: 0;
@@ -197,6 +269,7 @@ li.link a, li.link a:hover {
   cursor: default;
   cursor: pointer;
 }
+
 .fab span {
   vertical-align: middle;
 }

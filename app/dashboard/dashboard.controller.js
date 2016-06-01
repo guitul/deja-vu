@@ -3,9 +3,9 @@
  */
 
 angular.module('DejaVu')
-    .controller('MasterCtrl', ['$scope', '$cookieStore', '$state', 'searchService', MasterCtrl]);
+    .controller('MasterCtrl', ['$scope', '$cookieStore', 'searchService', MasterCtrl]);
 
-function MasterCtrl($scope, $cookieStore, $state, searchService) {
+function MasterCtrl($scope, $cookieStore, searchService) {
 
     /**
      * Sidebar Toggle & Cookie Control
@@ -18,10 +18,10 @@ function MasterCtrl($scope, $cookieStore, $state, searchService) {
     $scope.setCategory = function(category) {
         if (angular.isDefined(category)) {
             $scope.pageTitle = 'All / ' + category.name;
-            $state.go('index', {id: category._id});
+            $scope.$broadcast('selectCategory', category);
         } else {
             $scope.pageTitle = 'All';
-            $state.go('index');
+            $scope.$broadcast('selectCategory');
         }
     };
 
@@ -39,7 +39,6 @@ function MasterCtrl($scope, $cookieStore, $state, searchService) {
         } else {
             $scope.toggle = false;
         }
-
     });
 
     $scope.toggleSidebar = function() {
